@@ -8,87 +8,62 @@
 
         <title>Simple Blog</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-        <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
-
+        <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
         <style>
-            html, body, pre, code, kbd, samp {
-                font-family: "Press Start 2P";
+            :root {
+                --text-font: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
             }
-
-            header.sticky {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 9;
-                border-bottom: 4px solid #D3D3D3;
-                background-color: white;
-            }
-
-            header.sticky > .container {
-                font-size: 0.8rem;
-                padding: 0;
-                align-items: center;
-
-                max-width: 980px;
-                margin: 0 auto;
-            }
-
-            header.sticky > .container > .nav-brand {
-                margin-right: auto;
-            }
-
-            a {
-                color: #212529;
-                text-decoration: none;
-            }
-
-            .main-container {
-                max-width: 980px;
-                margin: 0 auto;
-                margin-top: 150px;
+            * {
+                font-family: var(--text-font);
             }
         </style>
     </head>
-    <body>
-        <header class="sticky">
-            <div class="container">
-                <div class="nav-brand">
-                    <a href="https://github.com/asakura89">
+    <body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+        <header class="w-full z-30 top-0 py-1">
+            <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
+                <div class="order-1 md:order-2">
+                    <a href="https://github.com/asakura89" class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl ">
                         <h1>Simple Blog</h1>
                     </a>
-                    <p>C# .Net and Javascript writings.</p>
+                    <p class="flex items-center tracking-wide no-underline hover:no-underline font-normal text-gray-800 text-md ">C# .Net and Javascript writings.</p>
                 </div>
             </div>
         </header>
-        <div class="main-container">
+        <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
             <main class="main-content">
-                <h1>Hey hoo manusiaaa.</h1>
+                <h1>Hey hoo Devs.</h1>
                 <p>
-                    Selamat datang ke situs blog gue.
+                    Selamat datang ke situs blog yang simple ini.
                     <br/>
-                    Wohooo.
+                    Semoga bisa membantu dalam mengerti dan menambah wawasan tentang c# dan Javascript.
                 </p>
                 <br/>
                 <br/>
-                <section class="nes-field">
-                    <label for="search-field">Search</label>
-                    <input id="search-field" class="nes-input" type="text" placeholder="writing title ..." />
+                <section class="mb-4">
+                    <label for="search-field" class="uppercase block font-bold text-gray-800 text-xl mb-2">Cari</label>
+                    <input id="search-field" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="judul ..." />
                 </section>
                 <br/>
                 <br/>
-                <section class="nes-container with-title">
-                    <h3 class="title">Index</h3>
-                    <div class="item">
-                        <ul class="nes-list is-circle">
-                            <li>
-                                <a href="/wwwroot/menikmati-powershell-20190111.html">Menikmati Powershell</a>
-                            </li>
-                        </ul>
-                    </div>
+                <section class="mb-4">
+                    <p class="uppercase block font-bold text-gray-800 text-xl mb-2">Index</p>
+                    <ul id="article-title" class="list-disc">
+                        <li data-jets="menikmati powershell">
+                            <a href="/wwwroot/menikmati-powershell-20190111.html">Menikmati Powershell</a>
+                        </li>
+                    </ul>
                 </section>
             </main>
         </div>
+
+        <script src="assets/js/jets.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            document.getElementById("search-field").value = "";
+            var jets = new Jets({
+                searchTag: '#search-field',
+                contentTag: '#article-title'
+            });
+        </script>
     </body>
 </html>
